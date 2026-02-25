@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>Weather</h1>
+      <div class="api-key-row">
+        <label for="apiKeyInput">API key</label>
+        <input type="password" id="apiKeyInput" placeholder="OpenWeatherMap API key" autocomplete="off" />
+        <button type="button" id="saveApiKeyBtn" class="secondary">Save</button>
+      </div>
+      <div class="search-row">
+        <input type="text" id="citySearch" placeholder="Search city..." autocomplete="off" />
+        <button type="button" id="searchBtn" aria-label="Search">Search</button>
+        <button type="button" id="addFavoriteBtn" class="secondary" title="Add to favorites">★ Add favorite</button>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="current-weather card" id="currentWeather" aria-live="polite">
+        <p class="placeholder" id="currentPlaceholder">Search for a city to see weather</p>
+        <div class="current-content hidden" id="currentContent">
+          <div class="city-row">
+            <h2 id="currentCity"></h2>
+            <span class="favorite-badge hidden" id="isFavoriteBadge">★ Favorite</span>
+          </div>
+          <div class="temp-row">
+            <span class="temp" id="currentTemp"></span>
+            <span class="unit">°C</span>
+            <img class="weather-icon" id="currentIcon" alt="" />
+          </div>
+          <p class="description" id="currentDesc"></p>
+          <div class="details">
+            <div class="detail">
+              <span class="label">Humidity</span>
+              <span class="value" id="currentHumidity"></span>
+            </div>
+            <div class="detail">
+              <span class="label">Feels like</span>
+              <span class="value" id="currentFeelsLike"></span>
+            </div>
+            <div class="detail">
+              <span class="label">Wind</span>
+              <span class="value" id="currentWind"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="forecast card">
+        <h3>5-day forecast</h3>
+        <div class="forecast-list" id="forecastList" aria-live="polite">
+          <p class="placeholder" id="forecastPlaceholder">Forecast will appear after searching</p>
+        </div>
+      </section>
+
+      <section class="favorites card">
+        <h3>Favorite cities</h3>
+        <ul class="favorites-list" id="favoritesList"></ul>
+        <p class="placeholder small" id="favoritesPlaceholder">No favorites yet. Search and click "Add favorite".</p>
+      </section>
+
+      <section class="api-log card">
+        <h3>API calls</h3>
+        <div class="api-log-controls">
+          <button type="button" id="clearLogBtn" class="secondary small">Clear log</button>
+        </div>
+        <ul class="api-log-list" id="apiLogList" aria-live="polite"></ul>
+        <p class="placeholder small" id="apiLogPlaceholder">API requests will appear here when you search.</p>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
